@@ -4,8 +4,16 @@ import {
 	useState,
 	type PropsWithChildren,
 } from 'react';
+import type { Reserva } from '../data';
 
-export type AppContextValue = {
+// tipado del contexto
+type EspacioContextType = {
+
+	
+
+}
+
+/*export type AppContextValue = {
 	message: string;
 	setMessage: (value: string) => void;
 	resetMessage: () => void;
@@ -16,7 +24,9 @@ export const AppContext = createContext<AppContextValue | undefined>(undefined);
 const defaultMessage = 'Context API ready';
 
 export function AppContextProvider({ children }: PropsWithChildren) {
-	const [message, setMessage] = useState(defaultMessage);
+	const [espaciosContext, setEspaciosContext] = useState("");
+	const [reservaContext, setReservaContext] = useState("");
+	const [reservaContext, setReservaContext] = useState("");
 
 	const value = {
 		message,
@@ -26,3 +36,5 @@ export function AppContextProvider({ children }: PropsWithChildren) {
 
 	return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
+/*
+
