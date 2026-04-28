@@ -4,14 +4,32 @@ import {
 	useState,
 	type PropsWithChildren,
 } from 'react';
-import type { Reserva } from '../data';
+import type { initialReservas, Reserva, Space } from '../data';
+
+interface Filters {
+	type: string;
+	available: string;
+}
 
 // tipado del contexto
-type EspacioContextType = {
+interface AppContextType {
+	space: Reserva [];
+	filters: Filters; 
+	setFilter: (key: key of filters, value: string) => void;
+};
 
-	
+//crear el contexto
+export const AppContext = createContext<AppContextType | undefined>(undefined);
 
-}
+//provider
+export function AppContextProvider({ children }: PropsWithChildren) {
+	const [espaciosContext, setEspaciosContext] = useState("");
+	const [reservaContext, setReservaContext] = useState("");
+	const [filterContext, setFilterContext] = useState<Filters>({type:"", available:""});
+
+
+	return <AppContext.Provider value={{espaciosContext, setEspaciosContext, reservaContext, setReservaContext, filterContext, setFilterContext}}>{children}</AppContext.Provider>;
+};
 
 /*export type AppContextValue = {
 	message: string;

@@ -1,15 +1,16 @@
-_import { AppContext } from "../context/AppContext";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
 
 export function Filters () {
-    const [filter, setFilter] = useReserva;
+    const {filterContext} = useContext(AppContext)!;
 
     return (
         <div>
             <label>
                 Tipo
                 <select
-                    value={filter.type}
-                    onChange={(e) => setFilter("type", e.target.value)}
+                    value={filterContext.type}
+                    onChange={(e) => filterContext("type", e.target.value)}
                     >
                         <option value="">Todos</option>
                         <option value="">meeting room</option>
@@ -22,8 +23,8 @@ export function Filters () {
              <label>
                 Disponibilidad
                 <select
-                    value={filter.available}
-                    onChange={(e) => setFilter("available", e.target.value)}
+                    value={filterContext.available}
+                    onChange={(e) => filterContext("available", e.target.value)}
                     >
                         <option value="">Todos</option>
                         <option value="">disponible</option>
